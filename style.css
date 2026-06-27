@@ -1,0 +1,292 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --primary-color: #ff4d6d;
+    --secondary-color: #ffb3c1;
+    --bg-gradient: linear-gradient(135deg, #2a0845 0%, #6441A5 100%);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Update the body background to a romantic pinkish-purple gradient */
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Soft pink/purple romantic gradient */
+    background: radial-gradient(circle at top right, #ffafbd, #ffc3a0, #6441A5, #2a0845);
+    background-attachment: fixed;
+    color: white;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Remove the old .stars CSS and replace with this for hearts */
+#particles {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.heart-particle {
+    position: absolute;
+    /* Make them more visible with higher base opacity and a subtle glow */
+    color: rgba(255, 255, 255, 0.7); 
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    font-size: 20px;
+    animation: floatHeart 8s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes floatHeart {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    50% { opacity: 0.6; }
+    100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 20px;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2rem; }
+
+/* Background Animations */
+.stars {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><circle cx="150" cy="150" r="1" fill="white" opacity="0.5"/></svg>') repeat;
+    animation: moveStars 50s linear infinite;
+    z-index: -1;
+}
+
+@keyframes moveStars {
+    from { background-position: 0 0; }
+    to { background-position: 1000px 1000px; }
+}
+
+/* Screens & Transitions */
+.screen {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease-in-out;
+}
+
+.screen.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.screen.hidden {
+    display: none;
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    animation: float 6s ease-in-out infinite;
+}
+
+.small-card { padding: 20px; max-width: 400px; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Buttons */
+.btn-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn.primary {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+}
+
+.btn.primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 77, 109, 0.6);
+}
+
+.btn.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn.massive {
+    font-size: 2rem;
+    padding: 20px 60px;
+    margin-top: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(255, 77, 109, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 109, 0); }
+}
+
+/* Playful Button Logic */
+.relative-container { position: relative; min-height: 400px; }
+.playful { transition: all 0.2s ease; z-index: 10; }
+
+.broken {
+    animation: breakApart 0.5s forwards;
+    pointer-events: none;
+}
+
+@keyframes breakApart {
+    0% { transform: scale(1) rotate(0deg); opacity: 1; }
+    20% { transform: scale(1.2) rotate(10deg); }
+    50% { transform: scale(0.8) rotate(-15deg); filter: blur(2px); }
+    100% { transform: scale(0) rotate(45deg) translateY(100px); opacity: 0; }
+}
+
+/* Utilities */
+.floating-btn {
+    position: fixed;
+    bottom: 20px; right: 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+#privacyNotice {
+    position: fixed;
+    bottom: 20px; left: 20px;
+    z-index: 100;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.5rem; }
+    .btn { padding: 12px 30px; font-size: 1rem; }
+    .btn-group { flex-direction: column; }
+    .playful { position: relative; /* Reset for mobile initially */ } 
+}
+
+/* Celebration Canvas Effects */
+#celebrationCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Sits above the background, but below the card */
+    pointer-events: none; /* Lets clicks pass through to the buttons */
+}
+
+/* Ensure the celebration card sits above the fireworks */
+.celebration-card {
+    position: relative;
+    z-index: 10;
+}
+
+/* Celebration Wrapper & Big Animated Heart */
+.celebration-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* Keeps the card and heart above the fireworks */
+}
+
+.big-animated-heart {
+    position: absolute;
+    width: 120vw; /* Scales with the screen, making it huge */
+    max-width: 900px; /* Prevents it from getting too crazy on large monitors */
+    z-index: -1; /* Puts it directly behind the glass card */
+    opacity: 0.6;
+    animation: bigHeartPulse 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 60px rgba(255, 77, 109, 0.8)); /* Deep pink glow */
+}
+
+.big-animated-heart svg path {
+    fill: rgba(255, 77, 109, 0.25); /* Very soft, semi-transparent pink */
+}
+
+/* Authentic double-beat heart animation */
+@keyframes bigHeartPulse {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.08); opacity: 0.8; }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.08); opacity: 0.8; }
+    100% { transform: scale(1); }
+}
+
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.modal.hidden {
+    display: none;
+}
+
+/* Modal glass card styling */
+.modal .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 40px;
+    color: white;
+    max-width: 500px;
+}

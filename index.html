@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Marry Me?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div id="particles"></div>
+
+    <audio id="bgMusic" loop>
+    <source src="music.mp3.mp3" type="audio/mpeg">
+</audio>
+    <button id="musicBtn" class="floating-btn">🎵 Play Music</button>
+
+    <div id="privacyNotice" class="glass-card small-card">
+        <p>This experience uses lightweight cookies/analytics to save your beautiful journey. ❤️</p>
+        <button id="acceptPrivacy" class="btn primary">I Understand</button>
+    </div>
+
+    <section id="loadingScreen" class="screen active">
+        <div class="glass-card">
+            <h2>A Little Surprise Is Waiting For You ❤️</h2>
+            <div class="loader-heart">❤️</div>
+        </div>
+    </section>
+
+    <section id="q1" class="screen hidden">
+        <div class="glass-card">
+            <h1>Will You Marry Me? ❤️</h1>
+            <p>You are the best thing that ever happened to me.</p>
+            <div class="btn-group">
+                <button class="btn primary" onclick="handleResponse('q1', 'YES')">❤️ YES</button>
+                <button class="btn secondary" onclick="handleResponse('q1', 'NO')">💔 NO</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="q2" class="screen hidden">
+        <div class="glass-card">
+            <h2>Are You Sure? 🥺</h2>
+            <div class="btn-group">
+                <button class="btn primary" onclick="handleResponse('q2', 'YES')">YES</button>
+                <button class="btn secondary" onclick="handleResponse('q2', 'NO')">NO</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="q3" class="screen hidden">
+        <div class="glass-card">
+            <h2>You Will Never Get Another Man Like Me ❤️</h2>
+            <div class="btn-group">
+                <button class="btn primary" onclick="handleResponse('q3', 'OK')">OK</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="q4" class="screen hidden">
+        <div class="glass-card relative-container" id="q4Card">
+            <h2 id="q4Text">Think Again ❤️</h2>
+            <div class="btn-group">
+                <button class="btn primary" onclick="handleResponse('q4', 'OK')">OK</button>
+                <button id="runawayBtn" class="btn secondary playful" onmouseover="moveButton()" onclick="hitButton()">NO</button>
+            </div>
+            
+            <div id="brokenState" class="hidden">
+                <h2>You Broke The Button 😭❤️</h2>
+                <p>Now You Have Only One Option.</p>
+                <button class="btn massive" onclick="handleResponse('q4', 'YES')">❤️ YES ❤️</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="celebration" class="screen hidden">
+        
+        <canvas id="celebrationCanvas"></canvas>
+        
+        <div class="celebration-wrapper">
+            
+            <div class="big-animated-heart">
+                <svg viewBox="0 0 32 29.6">
+                    <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+                </svg>
+            </div>
+
+            <div class="glass-card celebration-card">
+                <h1>She Said YES ❤️</h1>
+                <p>Congratulations! This is the happiest moment of my life.</p>
+                <div class="couple-illustration">👩‍❤️‍👨</div>
+                <h2>I Promise To Love You Forever ❤️</h2>
+                <button class="btn primary">Our Forever Journey</button>
+            </div>
+            
+        </div>
+    </section>
+
+
+    <div id="futureModal" class="modal hidden">
+    <div class="glass-card">
+        <h2>A Note</h2>
+        <p id="futureNote">"I love you more today than yesterday, but not as much as I will tomorrow."</p>
+        <button class="btn primary" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
